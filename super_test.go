@@ -177,6 +177,11 @@ func TestHandle0(t *testing.T) {
 		_, ok := progress.Handle0(v).(*rule.Straight)
 		println(ok)
 	}
+	arr2 := []string{"334455667788", "778899XXJJQQKKAA"}
+	for _, v := range arr2 {
+		_, ok := progress.Handle0(v).(*rule.ConsecutivePair)
+		println(ok)
+	}
 }
 
 func TestRemovePlayerCards(t *testing.T) {

@@ -183,6 +183,6 @@ func Handle0(seq string) any {
 		}
 		return &rule.ConsecutivePair{Pairs: pairs, Len: len(seq) / 2}
 	} else {
-		panic("Invalid straight sequence")
+		panic("Invalid straight or consecutive_pair sequence")
 	}
 }
