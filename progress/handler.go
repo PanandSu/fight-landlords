@@ -147,9 +147,19 @@ func Handle8(seq string) any {
 			cards = append(cards, card)
 		}
 		return &rule.Straight{Cards: cards, Len: 8}
+	} else if IsConsecutivePair(seq) {
+		pairs := make([]*rule.Pair, 0)
+		for i := 0; i < len(seq); i = i + 2 {
+			pair := [2]*model.Card{}
+			pair[0] = toCard(rune(seq[i]))
+			pair[1] = toCard(rune(seq[i+1]))
+			pairs = append(pairs, &rule.Pair{Cards: pair})
+		}
+		return &rule.ConsecutivePair{Pairs: pairs, Len: 4}
 	} else {
-		panic("Invalid airplane or straight sequence")
+		panic("Invalid airplane or straight or consecutive_pair sequence")
 	}
+	return nil
 }
 
 func Handle0(seq string) any {

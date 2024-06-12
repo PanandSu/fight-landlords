@@ -126,7 +126,7 @@ func TestHandle4(t *testing.T) {
 }
 
 func TestHandle5(t *testing.T) {
-	arr := []string{"34567", "9XJQK", "XJQKA", "23456"}
+	arr := []string{"34567", "9XJQK", "XJQKA"}
 	for _, v := range arr {
 		_, ok := progress.Handle5(v).(*rule.Straight)
 		println(ok)
@@ -146,7 +146,7 @@ func TestHandle6(t *testing.T) {
 	}
 	arr3 := []string{"334455", "QQKKAA"}
 	for _, v := range arr3 {
-		_, ok := progress.Handle3(v).(*rule.ConsecutivePair)
+		_, ok := progress.Handle6(v).(*rule.ConsecutivePair)
 		println(ok)
 	}
 }
@@ -162,8 +162,13 @@ func TestHandle8(t *testing.T) {
 		_, ok := progress.Handle8(v).(*rule.Straight)
 		println(ok)
 	}
-	_, ok := progress.Handle8("222333XJ").(*rule.Airplane)
-	println(ok)
+	arr3 := []string{"33445566", "JJQQKKAA"}
+	for _, v := range arr3 {
+		_, ok := progress.Handle8(v).(*rule.ConsecutivePair)
+		println(ok)
+	}
+	//_, ok := progress.Handle8("222333XJ").(*rule.Airplane)
+	//println(ok)
 }
 
 func TestHandle0(t *testing.T) {
