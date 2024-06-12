@@ -9,8 +9,34 @@ import (
 	"testing"
 )
 
+func TestDemo(t *testing.T) {
+	check := func(c1, c2, c3 string) bool {
+		s := c1 + c2 + c3
+		sorted := progress.AscendStr(s)
+		fmt.Println(sorted)
+		return true
+	}
+	check("J798K975LKK36XQAQ", "6Q538XJ6475423X6A", "48XJ2954JQ4A22A8K")
+	println(util.SortedStr("73J9579685368A4527634AA5922A4424886QJKKQQXJXQJXXKL"))
+
+	println(util.SortedStr("A23456789XJQKLB"))
+}
+
 func TestAscendStr(t *testing.T) {
-	fmt.Println(util.SortedStr("73J9579685368A4527634AA5922A4424886QJKKQQXJXQJXXKLK"))
+	s := "73J9579685368A4527634AA5922A4424886QJKKQQXJXQJXXKLK"
+	fmt.Println(len(s))
+	fmt.Println(util.SortedStr(s), len(util.SortedStr(s)))
+}
+
+func TestDeal(t *testing.T) {
+	pc1 := "Q3X5A38Q94X949K75"
+	pc2 := "AJKK64B2K49827J3A"
+	pc3 := "X7862LAQ66Q5JX835J72"
+	joker := util.SortedStr(pc1 + pc2 + pc3)
+	fmt.Println(joker)
+	if joker != "3333444455556666777788889999XXXXJJJJQQQQKKKKAAAA2222LB" {
+		panic("error")
+	}
 }
 
 // 测试通过
@@ -98,6 +124,7 @@ func TestHandle4(t *testing.T) {
 		println(ok)
 	}
 }
+
 func TestHandle5(t *testing.T) {
 	arr := []string{"34567", "9XJQK", "XJQKA", "23456"}
 	for _, v := range arr {
@@ -105,6 +132,7 @@ func TestHandle5(t *testing.T) {
 		println(ok)
 	}
 }
+
 func TestHandle6(t *testing.T) {
 	arr := []string{"2222XX", "999933", "KKKKQQ"}
 	for _, v := range arr {
@@ -116,7 +144,13 @@ func TestHandle6(t *testing.T) {
 		_, ok := progress.Handle6(v).(*rule.Straight)
 		println(ok)
 	}
+	arr3 := []string{"334455", "QQKKAA"}
+	for _, v := range arr3 {
+		_, ok := progress.Handle3(v).(*rule.ConsecutivePair)
+		println(ok)
+	}
 }
+
 func TestHandle8(t *testing.T) {
 	arr := []string{"33344456", "XJJJQQQK", "46AAA222"}
 	for _, v := range arr {
@@ -131,6 +165,7 @@ func TestHandle8(t *testing.T) {
 	_, ok := progress.Handle8("222333XJ").(*rule.Airplane)
 	println(ok)
 }
+
 func TestHandle0(t *testing.T) {
 	arr := []string{"3456789", "56789XJQKA"}
 	for _, v := range arr {

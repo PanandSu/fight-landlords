@@ -7,7 +7,7 @@ import (
 type Card struct {
 	Style      string
 	Name       string // A,2,3,4,5,6,7,8,9,10,J,Q,K,Little-Joker,Big-Joker
-	Number     int    //14,15,3,4,5,6,7,8,9,10,11,12,13,16,17
+	Number     int    //14,15,3,4,5,6,7,8,9,10,11,12,13,16,17用于比较
 	IsLandlord bool
 }
 
